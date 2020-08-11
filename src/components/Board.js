@@ -3,21 +3,28 @@ import React from "react";
 import Square from "./Square";
 
 export default function Board() {
-  const [squares, setSquares] = React.useState([
-    "O",
+  let [squares, setSquares] = React.useState([
+    "🐱‍🐉",
     null,
-    "X",
-    "X",
-    "X",
-    "O",
-    "O",
+    "🐢",
+    "🐢",
+    "🐢",
+    "🐱‍🐉",
+    "🐱‍🐉",
     null,
     null,
   ]);
-  const status = "Next player: X";
 
-  function handleClick() {
-    alert("click");
+  const status = "Next player: 🐱‍🐉";
+
+  function handleClick(i) {
+    /*     const squares = squares.slice();
+    squares[i] = "✌";
+    setSquares({ squares: squares }); */
+    const squaresCopy = squares.slice();
+    squaresCopy[i] = "✌";
+    setSquares(squaresCopy);
+    console.log(squaresCopy);
   }
 
   return (
@@ -27,55 +34,55 @@ export default function Board() {
         <Square
           value={squares[0]}
           onClick={function () {
-            setSquares(handleClick);
+            handleClick(0);
           }}
         />
         <Square
           value={squares[1]}
           onClick={function () {
-            setSquares(handleClick);
+            handleClick(1);
           }}
         />
         <Square
           value={squares[2]}
           onClick={function () {
-            setSquares(handleClick);
+            handleClick(2);
           }}
         />
         <Square
           value={squares[3]}
           onClick={function () {
-            setSquares(handleClick);
+            handleClick(3);
           }}
         />
         <Square
           value={squares[4]}
           onClick={function () {
-            setSquares(handleClick);
+            handleClick(4);
           }}
         />
         <Square
           value={squares[5]}
           onClick={function () {
-            setSquares(handleClick);
+            handleClick(5);
           }}
         />
         <Square
           value={squares[6]}
           onClick={function () {
-            setSquares(handleClick);
+            handleClick(6);
           }}
         />
         <Square
           value={squares[7]}
           onClick={function () {
-            setSquares(handleClick);
+            handleClick(7);
           }}
         />
         <Square
           value={squares[8]}
           onClick={function () {
-            setSquares(handleClick);
+            handleClick(8);
           }}
         />
       </div>
