@@ -1,6 +1,7 @@
 import "./board.css";
 import React from "react";
 import Square from "./Square";
+import { calculateWinner } from "../api/game";
 
 export default function Board() {
   const [squares, setSquares] = React.useState(Array(9).fill(null));
@@ -8,14 +9,23 @@ export default function Board() {
 
   const nextPlayer = isDragonNext ? "🐱‍🐉" : "🐢";
 
-  const status = `Next player:${nextPlayer}`;
-
   function handleClick(i) {
     const squaresCopy = [...squares];
+    if (calculateWinner(squares) || squares[i]) {
+      return;
+    }
     squaresCopy[i] = nextPlayer;
     setSquares(squaresCopy);
     setisDragonNext(!isDragonNext);
     /* console.log(squaresCopy); */
+  }
+
+  const winner = calculateWinner(squares);
+  let status;
+  if (winner) {
+    status = `Winner:${winner}`;
+  } else {
+    status = `Next player:${nextPlayer}`;
   }
 
   return (
