@@ -3,26 +3,13 @@ import React from "react";
 import Square from "./Square";
 
 export default function Board() {
-  let [squares, setSquares] = React.useState([
-    "🐱‍🐉",
-    null,
-    "🐢",
-    "🐢",
-    "🐢",
-    "🐱‍🐉",
-    "🐱‍🐉",
-    null,
-    null,
-  ]);
+  let [squares, setSquares] = React.useState(Array(9).fill(null));
 
   const status = "Next player: 🐱‍🐉";
 
   function handleClick(i) {
-    /*     const squares = squares.slice();
-    squares[i] = "✌";
-    setSquares({ squares: squares }); */
-    const squaresCopy = squares.slice();
-    squaresCopy[i] = "✌";
+    const squaresCopy = [...squares];
+    squaresCopy[i] = "🐱‍🐉";
     setSquares(squaresCopy);
     console.log(squaresCopy);
   }
