@@ -4,15 +4,17 @@ import Square from "./Square";
 
 export default function Board() {
   const [squares, setSquares] = React.useState(Array(9).fill(null));
-  const [nextPlayerDragon, setNextPlayerDragon] = React.useState(true);
+  const [isDragonNext, setisDragonNext] = React.useState(true);
 
-  const status = "Next player:" + (nextPlayerDragon ? "🐱‍🐉" : "🐢");
+  const nextPlayer = isDragonNext ? "🐱‍🐉" : "🐢";
+
+  const status = `Next player:${nextPlayer}`;
 
   function handleClick(i) {
     const squaresCopy = [...squares];
-    squaresCopy[i] = nextPlayerDragon ? "🐱‍🐉" : "🐢";
+    squaresCopy[i] = nextPlayer;
     setSquares(squaresCopy);
-    setNextPlayerDragon(!nextPlayerDragon);
+    setisDragonNext(!isDragonNext);
     /* console.log(squaresCopy); */
   }
 
